@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para el amor de mi vida 🌹</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #3a0007 0%, #100003 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Contenedor Principal */
+    .card {
+      background: rgba(20, 5, 8, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 77, 109, 0.25);
+      border-radius: 25px;
+      padding: 30px 20px;
+      max-width: 92%;
+      width: 440px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(255, 0, 60, 0.25), inset 0 0 15px rgba(255, 77, 109, 0.1);
+      z-index: 10;
+      animation: fadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    /* Iluminación de fondo para el ramo */
+    .glow-bg {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 0, 80, 0.4) 0%, transparent 70%);
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* SVG del Ramo de Rosas */
+    .bouquet-container {
+      position: relative;
+      z-index: 2;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 10px auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      color: #ff4d6d;
+      margin-bottom: 8px;
+      text-shadow: 0 0 15px rgba(255, 77, 109, 0.7);
+      letter-spacing: 0.5px;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, rgba(255, 77, 109, 0.2), rgba(201, 24, 74, 0.4));
+      border: 1px solid #ff4d6d;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(255, 77, 109, 0.3);
+    }
+
+    /* Carrusel de Frases */
+    .phrase-container {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .phrase {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #fff0f3;
+      font-style: italic;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(15px) scale(0.95);
+      position: absolute;
+      width: 100%;
+    }
+
+    .phrase.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      position: relative;
+    }
+
+    /* Botón de Música */
+    .music-btn {
+      background: linear-gradient(135deg, #ff0055, #900020);
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 0, 85, 0.5);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 25px rgba(255, 0, 85, 0.7);
+    }
+
+    /* Estilos de los Pétalos Caídos del Ramo */
+    .petal {
+      position: absolute;
+      background: linear-gradient(135deg, #ff0040 0%, #800016 100%);
+      border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      animation: fallAndSway linear infinite;
+    }
+
+    @keyframes fallAndSway {
+      0% {
+        top: 25vh;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+      }
+      25% {
+        transform: translateX(25px) rotate(90deg) scale(0.9);
+      }
+      50% {
+        transform: translateX(-20px) rotate(180deg) scale(0.85);
+      }
+      75% {
+        transform: translateX(30px) rotate(270deg) scale(0.8);
+      }
+      100% {
+        top: 105vh;
+        opacity: 0;
+        transform: translateX(-10px) rotate(360deg) scale(0.7);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canción: I Wanna Be Yours - Arctic Monkeys -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://audio.com/novee0203/audio/arctic-monkeys-i-wanna-be-yours" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <div class="glow-bg"></div>
+
+    <!-- Ilustración vectorial detallada del Ramo de Rosas -->
+    <div class="bouquet-container">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <defs>
+          <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff1a40;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#99001c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4a000e;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1e4d2b" />
+            <stop offset="100%" style="stop-color:#0d2614" />
+          </linearGradient>
+          <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff4d6d" />
+            <stop offset="100%" style="stop-color:#a71d31" />
+          </linearGradient>
+        </defs>
+
+        <!-- Tallos -->
+        <path d="M85 130 L70 190 M100 130 L100 195 M115 130 L130 190" stroke="url(#stemGrad)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M75 140 L60 120 M125 140 L140 120" stroke="url(#stemGrad)" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- Hojas -->
+        <path d="M60 120 Q40 110 50 130 Q65 135 60 120" fill="#2d6a4f"/>
+        <path d="M140 120 Q160 110 150 130 Q135 135 140 120" fill="#2d6a4f"/>
+
+        <!-- Lazo Elegante del Ramo -->
+        <path d="M80 140 Q100 150 120 140 Q130 160 100 155 Q70 160 80 140" fill="url(#ribbonGrad)"/>
+        <circle cx="100" cy="145" r="7" fill="#ff758f"/>
+
+        <!-- Rosas Interiores y Exteriores (Formando un Ramo) -->
+        <!-- Rosa Izquierda Abajo -->
+        <g transform="translate(60,85) scale(0.75)">
+          <circle cx="20" cy="20" r="22" fill="url(#roseGrad)"/>
+          <path d="M10 15 Q20 5 30 15 Q35 25 20 32 Q5 25 10 15" fill="#ff3355"/>
+          <path d="M15 18 Q20 12 25 18 Q28 24 20 28 Q12 24 15 18" fill="#e60026"/>
+        </g>
+        <!-- Rosa Derecha Abajo -->
+        <g transform="translate(105,85) scale(0.75)">
+          <circle cx="20" cy="20" r="22" fill="url(#roseGrad)"/>
+          <path d="M10 15 Q20 5 30 15 Q35 25 20 32 Q5 25 10 15" fill="#ff3355"/>
+          <path d="M15 18 Q20 12 25 18 Q28 24 20 28 Q12 24 15 18" fill="#e60026"/>
+        </g>
+        <!-- Rosa Izquierda Arriba -->
+        <g transform="translate(45,50) scale(0.85)">
+          <circle cx="20" cy="20" r="22" fill="url(#roseGrad)"/>
+          <path d="M10 15 Q20 5 30 15 Q35 25 20 32 Q5 25 10 15" fill="#ff3355"/>
+          <path d="M15 18 Q20 12 25 18 Q28 24 20 28 Q12 24 15 18" fill="#e60026"/>
+        </g>
+        <!-- Rosa Derecha Arriba -->
+        <g transform="translate(120,50) scale(0.85)">
+          <circle cx="20" cy="20" r="22" fill="url(#roseGrad)"/>
+          <path d="M10 15 Q20 5 30 15 Q35 25 20 32 Q5 25 10 15" fill="#ff3355"/>
+          <path d="M15 18 Q20 12 25 18 Q28 24 20 28 Q12 24 15 18" fill="#e60026"/>
+        </g>
+        <!-- Rosa Central Principal -->
+        <g transform="translate(80,35) scale(1.05)">
+          <circle cx="20" cy="20" r="22" fill="url(#roseGrad)"/>
+          <path d="M10 15 Q20 5 30 15 Q35 25 20 32 Q5 25 10 15" fill="#ff1a40"/>
+          <path d="M15 18 Q20 12 25 18 Q28 24 20 28 Q12 24 15 18" fill="#cc0022"/>
+          <circle cx="20" cy="20" r="5" fill="#ff4d6d"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="date-badge">1 de Octubre • Un nuevo comienzo</div>
+    <h1>¡Hola, mi amor!</h1>
+
+    <div class="phrase-container">
+      <p class="phrase active">Te amo infinitamente. ❤️</p>
+      <p class="phrase">Recuerda que eres única, brillante y muy importante. ✨</p>
+      <p class="phrase">Hoy inicia un nuevo mes para seguir juntos, creciendo y mejorando día a día. 🌿</p>
+      <p class="phrase">Te extraño demasiado, no veo la hora de verte, abrazarte fuerte y no soltarte. 🫂</p>
+      <p class="phrase">Una y mil veces más: ¡Te amo con toda mi alma! 💖</p>
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">
+      <span id="music-icon">🎵</span> <span id="music-text">I Wanna Be Yours</span>
+    </button>
+  </div>
+
+  <script>
+    // Rotador de frases
+    const phrases = document.querySelectorAll('.phrase');
+    let currentPhrase = 0;
+
+    setInterval(() => {
+      phrases[currentPhrase].classList.remove('active');
+      currentPhrase = (currentPhrase + 1) % phrases.length;
+      phrases[currentPhrase].classList.add('active');
+    }, 4200);
+
+    // Control de música
+    const music = document.getElementById('bg-music');
+    const musicText = document.getElementById('music-text');
+    const musicIcon = document.getElementById('music-icon');
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play().then(() => {
+          musicText.innerText = "Pausar música";
+          musicIcon.innerText = "⏸️";
+        }).catch(err => {
+          console.log("Error al reproducir audio:", err);
+        });
+      } else {
+        music.pause();
+        musicText.innerText = "I Wanna Be Yours";
+        musicIcon.innerText = "🎵";
+      }
+    }
+
+    // Generador de pétalos brotando directamente del ramo de rosas
+    function createPetalFromBouquet() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      
+      // Tamaño del pétalo
+      const size = Math.random() * 12 + 14; 
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size * 1.3}px`;
+      
+      // Origen: brotan de la zona del ramo (centro de la pantalla)
+      const startX = (window.innerWidth / 2) + (Math.random() * 120 - 60);
+      petal.style.left = `${startX}px`;
+      
+      // Duración y rotación aleatoria
+      petal.style.animationDuration = `${Math.random() * 3 + 4.5}s`;
+
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 7500);
+    }
+
+    // Crear pétalos continuamente
+    setInterval(createPetalFromBouquet, 250);
+  </script>
+</body>
+</html>
