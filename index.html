@@ -33,18 +33,12 @@
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
     .bouquet-box {
-      position: relative; width: 200px; height: 200px; margin: 0 auto 15px auto;
+      position: relative; width: 200px; height: 160px; margin: 0 auto 10px auto;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      animation: gentleFloat 3s ease-in-out infinite; transition: transform 0.15s ease;
+      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       -webkit-tap-highlight-color: transparent;
     }
-    .bouquet-box:active { transform: scale(1.15); }
-    .bouquet-box svg { width: 100%; height: 100%; filter: drop-shadow(0 8px 15px rgba(136, 14, 79, 0.2)); }
-    @keyframes gentleFloat {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(2.5deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
+    .bouquet-box:active, .bouquet-box.pressed { transform: scale(1.22) translateY(-4px) !important; }
     .tap-hint {
       display: inline-flex; background-color: #880e4f; color: #ffffff;
       font-size: 0.85rem; font-weight: 600; padding: 8px 20px; border-radius: 25px;
@@ -173,31 +167,7 @@
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
     <div class="bouquet-box" id="bouquetBtn" onclick="handleBouquetClick()">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path d="M125,185 L145,155 L105,100 L75,130 Z" fill="#81c784" />
-        <path d="M125,185 L145,155 L120,120 L100,150 Z" fill="#66bb6a" opacity="0.4" />
-        <rect x="110" y="140" width="20" height="8" rx="3" fill="#00acc1" transform="rotate(-35 120 144)"/>
-        <path d="M70,110 C55,80 75,60 90,75 Z" fill="#4caf50"/>
-        <path d="M125,75 C145,60 155,85 135,100 Z" fill="#4caf50"/>
-        <g transform="translate(85, 95) rotate(-20)">
-          <path d="M0,-20 C-12,-12 -15,6 0,20 C15,6 12,-12 0,-20 Z" fill="#ba68c8"/>
-          <path d="M-10,-6 C-15,2 -10,12 0,16 C-6,5 -3,-6 -10,-6 Z" fill="#8e24aa"/>
-          <path d="M10,-6 C15,2 10,12 0,16 C6,5 3,-6 10,-6 Z" fill="#8e24aa"/>
-        </g>
-        <g transform="translate(115, 70) rotate(15)">
-          <path d="M0,-22 C-14,-14 -16,7 0,22 C16,7 14,-14 0,-22 Z" fill="#ab47bc"/>
-          <path d="M-11,-7 C-16,2 -11,13 0,18 C-7,5 -3,-7 -11,-7 Z" fill="#7b1fa2"/>
-          <path d="M11,-7 C16,2 11,13 0,18 C7,5 3,-7 11,-7 Z" fill="#7b1fa2"/>
-        </g>
-        <g transform="translate(108, 92)">
-          <circle cx="0" cy="-12" r="6.5" fill="#fdd835"/>
-          <circle cx="11" cy="-4" r="6.5" fill="#fdd835"/>
-          <circle cx="7" cy="9" r="6.5" fill="#fdd835"/>
-          <circle cx="-7" cy="9" r="6.5" fill="#fdd835"/>
-          <circle cx="-11" cy="-4" r="6.5" fill="#fdd835"/>
-          <circle cx="0" cy="0" r="7" fill="#fb8c00"/>
-        </g>
-      </svg>
+      <div style="font-size: 110px; line-height: 1; user-select: none;">💐</div>
     </div>
 
     <div class="tap-hint" onclick="handleBouquetClick()">
@@ -207,7 +177,7 @@
     <div class="quote-card">
       <div class="quote-text" id="quoteText">"1 de octubre, porque sí, porque te amo. Un nuevo mes para recordar lo única, brillante e importante que eres en mi vida."</div>
       <div class="quote-footer">
-        <span>❤️ Con todo mi amor</span>
+        <span>❤️️ Con todo mi amor</span>
         <span class="tag-btn">Para siempre ✨</span>
       </div>
     </div>
@@ -354,8 +324,8 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
     const bouquetBtn = document.getElementById('bouquetBtn');
 
     function handleBouquetClick() {
-      bouquetBtn.style.transform = "scale(1.15)";
-      setTimeout(() => { bouquetBtn.style.transform = "scale(1)"; }, 200);
+      bouquetBtn.classList.add('pressed');
+      setTimeout(() => { bouquetBtn.classList.remove('pressed'); }, 200);
       toggleMusic();
     }
     function toggleMusic() {
