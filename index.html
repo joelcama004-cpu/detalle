@@ -42,11 +42,11 @@
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
     
-    /* ANIMACIÓN DE MOVIMIENTO LEVE AL RAMO */
+    /* CAJA DEL RAMO CON MOVIMIENTO FLOTANTE Y BALANCEO SUAVE */
     .bouquet-box {
       position: relative;
-      width: 220px;
-      height: 180px;
+      width: 210px;
+      height: 210px;
       margin: 0 auto 15px auto;
       cursor: pointer;
       display: flex;
@@ -56,7 +56,13 @@
       transition: transform 0.2s ease;
     }
     .bouquet-box:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
+    }
+    
+    .bouquet-box svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 15px rgba(136, 14, 79, 0.25));
     }
     
     @keyframes gentleFloat {
@@ -64,7 +70,7 @@
         transform: translateY(0px) rotate(0deg);
       }
       50% {
-        transform: translateY(-8px) rotate(1.5deg);
+        transform: translateY(-10px) rotate(3deg);
       }
       100% {
         transform: translateY(0px) rotate(0deg);
@@ -81,6 +87,7 @@
       border-radius: 25px;
       margin-bottom: 18px;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .quote-card {
       background: rgba(255, 255, 255, 0.9);
@@ -117,6 +124,7 @@
       border-radius: 16px;
       cursor: pointer;
       margin-bottom: 14px;
+      box-shadow: 0 6px 15px rgba(136, 14, 79, 0.3);
     }
     .sub-buttons { display: flex; gap: 10px; }
     .btn-sub {
@@ -174,8 +182,46 @@
     <h1>Para ti, mi bella flaca</h1>
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
+    <!-- RAMO VECTORIAL EN ALTA RESOLUCIÓN QUE NUNCA FALLA -->
     <div class="bouquet-box" onclick="toggleMusic()">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Red_rose_bouquet.jpg/640px-Red_rose_bouquet.jpg" alt="Ramo de rosas" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Papel/Envoltorio del ramo -->
+        <path d="M70,110 L130,110 L115,185 L85,185 Z" fill="#4db6ac" />
+        <path d="M60,95 L140,95 L130,115 L70,115 Z" fill="#80cbd3" />
+        <!-- Cinta del ramo -->
+        <ellipse cx="100" cy="150" rx="18" ry="7" fill="#ffee58" />
+        <path d="M92,150 Q100,165 90,180 M108,150 Q100,165 110,180" stroke="#ffee58" stroke-width="4" fill="none" stroke-linecap="round" />
+        <!-- Hojas -->
+        <path d="M50,90 Q70,70 90,85" stroke="#4caf50" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <path d="M150,90 Q130,70 110,85" stroke="#4caf50" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <!-- Flor Morada Izquierda -->
+        <g transform="translate(65, 75)">
+          <path d="M0,-22 C-12,-15 -18,5 0,22 C18,5 12,-15 0,-22 Z" fill="#ab47bc" />
+          <path d="M-12,-10 C-20,0 -15,15 0,22 C-10,5 -5,-10 -12,-10 Z" fill="#8e24aa" />
+          <path d="M12,-10 C20,0 15,15 0,22 C10,5 5,-10 12,-10 Z" fill="#8e24aa" />
+        </g>
+        <!-- Flor Morada Derecha -->
+        <g transform="translate(135, 75)">
+          <path d="M0,-22 C-12,-15 -18,5 0,22 C18,5 12,-15 0,-22 Z" fill="#ab47bc" />
+          <path d="M-12,-10 C-20,0 -15,15 0,22 C-10,5 -5,-10 -12,-10 Z" fill="#8e24aa" />
+          <path d="M12,-10 C20,0 15,15 0,22 C10,5 5,-10 12,-10 Z" fill="#8e24aa" />
+        </g>
+        <!-- Flor Amarilla Centro -->
+        <g transform="translate(100, 85)">
+          <circle cx="0" cy="-18" r="9" fill="#ffca28"/>
+          <circle cx="17" cy="-6" r="9" fill="#ffca28"/>
+          <circle cx="11" cy="14" r="9" fill="#ffca28"/>
+          <circle cx="-11" cy="14" r="9" fill="#ffca28"/>
+          <circle cx="-17" cy="-6" r="9" fill="#ffca28"/>
+          <circle cx="0" cy="0" r="10" fill="#ff8f00"/>
+        </g>
+        <!-- Flor Rosa Centro Arriba -->
+        <g transform="translate(100, 48)">
+          <path d="M0,-24 C-14,-15 -20,5 0,24 C20,5 14,-15 0,-24 Z" fill="#ec407a" />
+          <path d="M-14,-10 C-22,0 -17,15 0,24 C-12,5 -6,-10 -14,-10 Z" fill="#d81b60" />
+          <path d="M14,-10 C22,0 17,15 0,24 C12,5 6,-10 14,-10 Z" fill="#d81b60" />
+        </g>
+      </svg>
     </div>
 
     <div class="tap-hint" onclick="toggleMusic()">
