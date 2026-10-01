@@ -23,7 +23,6 @@
     }
     .container { width: 100%; max-width: 410px; text-align: center; position: relative; z-index: 10; }
     
-    /* ETIQUETA SUPERIOR CON TONOS MORADO/ROSADO ELEGANTE */
     .badge-top {
       display: inline-block;
       background-color: #ffffff;
@@ -144,8 +143,6 @@
       clip-path: polygon(0 100%, 0 0, 50% 50%, 100% 0, 100% 100%);
       z-index: 3;
     }
-    
-    /* CORAZÓN CAMBIADO A ROSADO */
     .envelope-heart {
       position: absolute;
       width: 44px; height: 40px;
@@ -345,7 +342,7 @@ Y, ¿sabes qué preciosa? A pesar de to’, de las dificultades, de los momentos
 
 Yo no te quiero solamente para los días bonitos, cuando todo marcha bien y nos sobran los motivos para sonreír. También quiero estar contigo en esos días en los que las cosas se sienten más pesadas, cuando no sabemos muy bien cómo soluciona’ algo o cuando simplemente necesitamos un poquito más de paciencia y comprensión. Porque mi amor por ti no desaparece cuando las cosas se complican. Aquí sigue, quizás a veces acompañado de miedos, de pensamientos y de sentimientos que no sé explicar del todo, pero sigue aquí, siendo tuyo.
 
-Te amo muchísimo mi niña. Y ojalá pudiera hacerte sentir aunque fuera por un instante, todo lo que siento cuando pienso en ti, porque hay cosas que por más que intente escribirlas nunca me van a alcanzar las palabras para explicarlas. Simplemente eres tú, mi niña. Tú, a quien extraño, a quien quiero abrazar, besar, cuidar y tener cerquita. Tú, con quien quiero compartir mis días y a quien quiero volve’ a mirar de frente mientras pienso en lo mucho que me gusta tenerte en mi life.
+Te amo muchísimo mi niña. Y ojalá pudiera hacerte sentir aunque fuera por un instante, todo lo que siento cuando pienso en ti, porque hay cosas que por más que intente escribirlas nunca me van a alcanzar las palabras para explicarlas. Simplemente eres tú, mi niña. Tú, a quien extraño, a quien quiero abrazar, besar, cuidar y tener cerquita. Tú, con quien quiero compartir mis días y a quien quiero volve’ a mirar de frente mientras pienso en lo mucho que me gusta tenerte en my life.
 
 Espero que llegue pronto el día en que pueda tenerte entre mis brazos y no tenga que despedirme de ti tan rápido. Quiero abrazarte por mucho rato, llenarte de besitos, esconder mi cara en tu cuellito y quedarme ahí, disfrutando de ti, de tu olor, de tu calor y de esa tranquilidad que me da sentirte cerca. Y probablemente después de todo eso todavía te diga que te extrañé mucho hahaha, porque ni teniéndote al frente creo que se me quitarían por completo las ganas de tenerte más cerca.
 
@@ -411,16 +408,28 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
     function checkPin() {
       if (enteredPin === correctPin) {
         closePasswordModal();
-        createBurstPetals(); // LLUVIA DE PÉTALOS AL ACEPTAR EL PIN
+        createBurstPetals(); 
+        
+        // REPRODUCE LA MÚSICA AUTOMÁTICAMENTE AL ABRIR LA CARTA
+        music.play();
+        if(musicText) musicText.innerText = "Pausar";
+
         document.getElementById('letterModal').classList.add('active');
       } else {
         document.getElementById('passError').innerText = "Contraseña incorrecta, amor ❤️";
         setTimeout(clearPin, 1000);
       }
     }
-    function closeLetter() { document.getElementById('letterModal').classList.remove('active'); }
+    
+    function closeLetter() { 
+      document.getElementById('letterModal').classList.remove('active'); 
+      // PAUSA LA MÚSICA AL CERRAR LA CARTA
+      music.pause();
+      if(musicText) musicText.innerText = "Música";
+    }
 
     const music = document.getElementById('bg-music');
+    const musicText = document.getElementById('music-text');
     const bouquetBtn = document.getElementById('bouquetBtn');
 
     function handleBouquetClick() {
@@ -431,8 +440,10 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
     function toggleMusic() {
       if (music.paused) {
         music.play();
+        if(musicText) musicText.innerText = "Pausar";
       } else {
         music.pause();
+        if(musicText) musicText.innerText = "Música";
       }
     }
     function createPetal() {
