@@ -22,6 +22,7 @@
       position: relative;
     }
     .container { width: 100%; max-width: 410px; text-align: center; position: relative; z-index: 10; }
+    
     .badge-top {
       display: inline-block;
       background-color: #ffebee;
@@ -42,7 +43,7 @@
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
     
-    /* RAMO FIJO SIN MOVIMIENTO CONTINUO + EFECTO DE BOTÓN HACIA ADELANTE AL TOCAR */
+    /* RAMO DE FLORES CON EFECTO POP-OUT AL TOCAR */
     .bouquet-box {
       position: relative;
       width: 200px;
@@ -55,8 +56,6 @@
       transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       -webkit-tap-highlight-color: transparent;
     }
-    
-    /* EFECTO CUANDO SE TOCA / PRESIONA (POP-OUT HACIA ADELANTE) */
     .bouquet-box:active, .bouquet-box.pressed {
       transform: scale(1.22) translateY(-4px) !important;
     }
@@ -96,18 +95,58 @@
       font-weight: 600;
     }
     .tag-btn { background: #ffebee; padding: 4px 12px; border-radius: 12px; color: #c2185b; font-weight: 700; }
-    .btn-main {
+
+    /* DISEÑO DEL SOBRE INTERACTIVO (COLORES ROSADOS/MORADOS DE LA PÁGINA) */
+    .envelope-card {
       width: 100%;
-      background: linear-gradient(135deg, #d81b60 0%, #880e4f 100%);
-      color: white;
-      border: none;
-      padding: 16px;
-      font-family: 'Shrikhand', cursive;
-      font-size: 1.15rem;
-      border-radius: 16px;
+      height: 170px;
+      background: linear-gradient(135deg, #ad1457 0%, #880e4f 100%);
+      border-radius: 20px;
+      border: 2px solid #f8bbd0;
+      box-shadow: 0 8px 20px rgba(136, 14, 79, 0.25);
+      position: relative;
       cursor: pointer;
-      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 25px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
     }
+    .envelope-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(136, 14, 79, 0.35);
+    }
+    .envelope-card:active {
+      transform: scale(0.98);
+    }
+
+    /* LÍNEAS DIAGONALES DEL SOBRE (SIN CORAZÓN AL CENTRO) */
+    .envelope-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        linear-gradient(to bottom right, transparent 49.5%, rgba(255, 205, 210, 0.35) 50%, transparent 50.5%),
+        linear-gradient(to bottom left, transparent 49.5%, rgba(255, 205, 210, 0.35) 50%, transparent 50.5%);
+      pointer-events: none;
+    }
+
+    .envelope-text {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
     .sub-buttons { display: flex; gap: 10px; }
     .btn-sub {
       flex: 1;
@@ -120,6 +159,8 @@
       border-radius: 14px;
       cursor: pointer;
     }
+
+    /* MODAL DE LA CARTA */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -182,9 +223,10 @@
       </div>
     </div>
 
-    <button class="btn-main" onclick="openLetter()">
-      📩 Leer Carta de Amor Virtual
-    </button>
+    <!-- SOBRE DE CARTA INTERACTIVO EN LUGAR DEL BOTÓN -->
+    <div class="envelope-card" onclick="openLetter()">
+      <div class="envelope-text">TOCA AQUÍ PARA ABRIR TU CARTA</div>
+    </div>
 
     <div class="sub-buttons">
       <button class="btn-sub" onclick="toggleMusic()">
@@ -218,7 +260,7 @@ Te amo mi preciosa. Más de lo que te imaginas, más de lo que a veces sé demos
 
 Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus besitos y tus sentones hahaha.✨
       </div>
-      <button class="close-btn" onclick="closeLetter()">Cerrar Carta ❤️️</button>
+      <button class="close-btn" onclick="closeLetter()">Cerrar Carta ❤️</button>
     </div>
   </div>
 
@@ -231,11 +273,8 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
     const bouquetBtn = document.getElementById('bouquetBtn');
 
     function handleBouquetClick() {
-      // Activa el salto/pulsación de botón
       bouquetBtn.classList.add('pressed');
       setTimeout(() => { bouquetBtn.classList.remove('pressed'); }, 200);
-      
-      // Controla la música
       toggleMusic();
     }
 
