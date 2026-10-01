@@ -22,151 +22,118 @@
       position: relative;
     }
     .container { width: 100%; max-width: 410px; text-align: center; position: relative; z-index: 10; }
-    
     .badge-top {
-      display: inline-block;
-      background-color: #ffebee;
-      color: #b71c1c;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 6px 18px;
-      border-radius: 25px;
-      margin-bottom: 12px;
-      border: 1px solid #ffcdd2;
+      display: inline-block; background-color: #ffebee; color: #b71c1c;
+      font-size: 0.8rem; font-weight: 700; padding: 6px 18px; border-radius: 25px;
+      margin-bottom: 12px; border: 1px solid #ffcdd2;
     }
     h1 {
-      font-family: 'Shrikhand', cursive;
-      font-size: 2.2rem;
-      color: #880e4f;
-      margin-bottom: 6px;
-      text-shadow: 2px 2px 0px #ffcdd2;
+      font-family: 'Shrikhand', cursive; font-size: 2.2rem; color: #880e4f;
+      margin-bottom: 6px; text-shadow: 2px 2px 0px #ffcdd2;
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
-    
-    /* RAMO DE FLORES CON EFECTO POP-OUT AL TOCAR */
     .bouquet-box {
-      position: relative;
-      width: 200px;
-      height: 160px;
-      margin: 0 auto 10px auto;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; width: 200px; height: 200px; margin: 0 auto 15px auto;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      animation: gentleFloat 3s ease-in-out infinite; transition: transform 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
-    .bouquet-box:active, .bouquet-box.pressed {
-      transform: scale(1.22) translateY(-4px) !important;
+    .bouquet-box:active { transform: scale(1.15); }
+    .bouquet-box svg { width: 100%; height: 100%; filter: drop-shadow(0 8px 15px rgba(136, 14, 79, 0.2)); }
+    @keyframes gentleFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2.5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
     }
-
     .tap-hint {
-      display: inline-flex;
-      background-color: #880e4f;
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 8px 20px;
-      border-radius: 25px;
-      margin-bottom: 18px;
-      cursor: pointer;
+      display: inline-flex; background-color: #880e4f; color: #ffffff;
+      font-size: 0.85rem; font-weight: 600; padding: 8px 20px; border-radius: 25px;
+      margin-bottom: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .quote-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 18px 20px;
-      margin-bottom: 18px;
-      border: 2px solid #ffcdd2;
+      background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 18px 20px;
+      margin-bottom: 18px; border: 2px solid #ffcdd2; box-shadow: 0 6px 15px rgba(136, 14, 79, 0.1);
+      min-height: 110px; display: flex; flex-direction: column; justify-content: space-between;
     }
     .quote-text {
-      font-family: 'Shrikhand', cursive;
-      font-size: 1.1rem;
-      color: #880e4f;
-      margin-bottom: 12px;
+      font-family: 'Shrikhand', cursive; font-size: 1.05rem; color: #880e4f;
+      margin-bottom: 10px; transition: opacity 0.5s ease;
     }
     .quote-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: #ad1457;
-      border-top: 2px dashed #f8bbd0;
-      padding-top: 10px;
-      font-weight: 600;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; color: #ad1457; border-top: 2px dashed #f8bbd0;
+      padding-top: 10px; font-weight: 600;
     }
     .tag-btn { background: #ffebee; padding: 4px 12px; border-radius: 12px; color: #c2185b; font-weight: 700; }
-
-    /* DISEÑO DEL SOBRE INTERACTIVO (COLORES ROSADOS/MORADOS DE LA PÁGINA) */
-    .envelope-card {
-      width: 100%;
-      height: 170px;
-      background: linear-gradient(135deg, #ad1457 0%, #880e4f 100%);
-      border-radius: 20px;
-      border: 2px solid #f8bbd0;
-      box-shadow: 0 8px 20px rgba(136, 14, 79, 0.25);
-      position: relative;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 25px;
-      margin-bottom: 16px;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
+    .envelope-box {
+      width: 100%; height: 160px; background: #f8bbd0; border-radius: 20px;
+      position: relative; cursor: pointer; box-shadow: 0 8px 20px rgba(136, 14, 79, 0.25);
+      margin-bottom: 16px; overflow: hidden; border: 2px solid #f48fb1;
+      display: flex; justify-content: center; align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; -webkit-tap-highlight-color: transparent;
     }
-    .envelope-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(136, 14, 79, 0.35);
+    .envelope-box:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(136, 14, 79, 0.35); }
+    .envelope-box:active { transform: scale(0.97); }
+    .envelope-flap {
+      position: absolute; top: 0; left: 0; width: 100%; height: 90px;
+      background: #f48fb1; clip-path: polygon(0 0, 50% 100%, 100% 0); z-index: 2;
     }
-    .envelope-card:active {
-      transform: scale(0.98);
+    .envelope-pocket {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 110px;
+      background: #fce4ec; clip-path: polygon(0 100%, 0 0, 50% 50%, 100% 0, 100% 100%); z-index: 3;
     }
-
-    /* LÍNEAS DIAGONALES DEL SOBRE (SIN CORAZÓN AL CENTRO) */
-    .envelope-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: 
-        linear-gradient(to bottom right, transparent 49.5%, rgba(255, 205, 210, 0.35) 50%, transparent 50.5%),
-        linear-gradient(to bottom left, transparent 49.5%, rgba(255, 205, 210, 0.35) 50%, transparent 50.5%);
-      pointer-events: none;
+    .envelope-heart {
+      position: absolute; width: 44px; height: 40px; background-color: #8e24aa;
+      top: 62px; left: calc(50% - 22px); z-index: 4; transform: rotate(-45deg);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); border-radius: 4px;
     }
-
-    .envelope-text {
-      position: relative;
-      z-index: 2;
-      color: #ffffff;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    .envelope-heart::before, .envelope-heart::after {
+      content: ""; position: absolute; width: 44px; height: 44px;
+      background-color: #8e24aa; border-radius: 50%;
     }
-
+    .envelope-heart::before { top: -22px; left: 0; }
+    .envelope-heart::after { left: 22px; top: 0; }
     .sub-buttons { display: flex; gap: 10px; }
     .btn-sub {
-      flex: 1;
-      background: #ffffff;
-      color: #880e4f;
-      border: 2px solid #f8bbd0;
-      padding: 12px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      border-radius: 14px;
-      cursor: pointer;
+      flex: 1; background: #ffffff; color: #880e4f; border: 2px solid #f8bbd0;
+      padding: 12px; font-size: 0.9rem; font-weight: 700; border-radius: 14px; cursor: pointer;
     }
-
-    /* MODAL DE LA CARTA */
+    .pass-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(80, 0, 20, 0.8); display: flex; justify-content: center;
+      align-items: center; z-index: 150; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease; padding: 15px;
+    }
+    .pass-overlay.active { opacity: 1; pointer-events: auto; }
+    .pass-card {
+      background: #fff5f5; width: 100%; max-width: 320px; border-radius: 24px;
+      padding: 25px 20px; border: 3px solid #f8bbd0; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .pass-title { font-family: 'Shrikhand', cursive; font-size: 1.2rem; color: #880e4f; margin-bottom: 8px; }
+    .pass-sub { font-size: 0.85rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
+    .pin-display { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+    .pin-dot {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #d81b60;
+      background: #ffebee; transition: background 0.2s;
+    }
+    .pin-dot.filled { background: #880e4f; border-color: #880e4f; }
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 240px; margin: 0 auto; }
+    .key-btn {
+      background: #ffffff; color: #880e4f; border: 2px solid #f8bbd0; font-size: 1.2rem;
+      font-weight: 700; padding: 12px 0; border-radius: 14px; cursor: pointer;
+      font-family: 'Fredoka', sans-serif; box-shadow: 0 3px 8px rgba(136, 14, 79, 0.1);
+    }
+    .key-btn:active { background: #ffebee; transform: scale(0.95); }
+    .pass-error { color: #d32f2f; font-size: 0.8rem; margin-top: 12px; font-weight: 700; min-height: 18px; }
+    .pass-close {
+      margin-top: 15px; background: none; border: none; color: #8e24aa;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: underline;
+    }
     .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(80, 0, 20, 0.7);
-      display: flex; justify-content: center; align-items: center;
-      z-index: 100; opacity: 0; pointer-events: none;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(80, 0, 20, 0.7); display: flex; justify-content: center;
+      align-items: center; z-index: 100; opacity: 0; pointer-events: none;
       transition: opacity 0.3s ease; padding: 15px;
     }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -206,7 +173,31 @@
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
     <div class="bouquet-box" id="bouquetBtn" onclick="handleBouquetClick()">
-      <div style="font-size: 110px; line-height: 1; user-select: none;">💐</div>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125,185 L145,155 L105,100 L75,130 Z" fill="#81c784" />
+        <path d="M125,185 L145,155 L120,120 L100,150 Z" fill="#66bb6a" opacity="0.4" />
+        <rect x="110" y="140" width="20" height="8" rx="3" fill="#00acc1" transform="rotate(-35 120 144)"/>
+        <path d="M70,110 C55,80 75,60 90,75 Z" fill="#4caf50"/>
+        <path d="M125,75 C145,60 155,85 135,100 Z" fill="#4caf50"/>
+        <g transform="translate(85, 95) rotate(-20)">
+          <path d="M0,-20 C-12,-12 -15,6 0,20 C15,6 12,-12 0,-20 Z" fill="#ba68c8"/>
+          <path d="M-10,-6 C-15,2 -10,12 0,16 C-6,5 -3,-6 -10,-6 Z" fill="#8e24aa"/>
+          <path d="M10,-6 C15,2 10,12 0,16 C6,5 3,-6 10,-6 Z" fill="#8e24aa"/>
+        </g>
+        <g transform="translate(115, 70) rotate(15)">
+          <path d="M0,-22 C-14,-14 -16,7 0,22 C16,7 14,-14 0,-22 Z" fill="#ab47bc"/>
+          <path d="M-11,-7 C-16,2 -11,13 0,18 C-7,5 -3,-7 -11,-7 Z" fill="#7b1fa2"/>
+          <path d="M11,-7 C16,2 11,13 0,18 C7,5 3,-7 11,-7 Z" fill="#7b1fa2"/>
+        </g>
+        <g transform="translate(108, 92)">
+          <circle cx="0" cy="-12" r="6.5" fill="#fdd835"/>
+          <circle cx="11" cy="-4" r="6.5" fill="#fdd835"/>
+          <circle cx="7" cy="9" r="6.5" fill="#fdd835"/>
+          <circle cx="-7" cy="9" r="6.5" fill="#fdd835"/>
+          <circle cx="-11" cy="-4" r="6.5" fill="#fdd835"/>
+          <circle cx="0" cy="0" r="7" fill="#fb8c00"/>
+        </g>
+      </svg>
     </div>
 
     <div class="tap-hint" onclick="handleBouquetClick()">
@@ -214,18 +205,17 @@
     </div>
 
     <div class="quote-card">
-      <div class="quote-text">
-        "1 de octubre, porque sí, porque te amo. Un nuevo mes para recordar lo única, brillante e importante que eres en mi vida."
-      </div>
+      <div class="quote-text" id="quoteText">"1 de octubre, porque sí, porque te amo. Un nuevo mes para recordar lo única, brillante e importante que eres en mi vida."</div>
       <div class="quote-footer">
         <span>❤️ Con todo mi amor</span>
         <span class="tag-btn">Para siempre ✨</span>
       </div>
     </div>
 
-    <!-- SOBRE DE CARTA INTERACTIVO EN LUGAR DEL BOTÓN -->
-    <div class="envelope-card" onclick="openLetter()">
-      <div class="envelope-text">TOCA AQUÍ PARA ABRIR TU CARTA</div>
+    <div class="envelope-box" onclick="openPasswordModal()">
+      <div class="envelope-flap"></div>
+      <div class="envelope-pocket"></div>
+      <div class="envelope-heart"></div>
     </div>
 
     <div class="sub-buttons">
@@ -235,6 +225,38 @@
       <button class="btn-sub" onclick="createBurstPetals()">
         🍂 Lluvia de Flores
       </button>
+    </div>
+  </div>
+
+  <div class="pass-overlay" id="passModal">
+    <div class="pass-card">
+      <div class="pass-title">Contraseña Secreta 🔐</div>
+      <div class="pass-sub">Ingresa el PIN de 4 dígitos para abrir tu carta</div>
+      
+      <div class="pin-display">
+        <div class="pin-dot" id="dot0"></div>
+        <div class="pin-dot" id="dot1"></div>
+        <div class="pin-dot" id="dot2"></div>
+        <div class="pin-dot" id="dot3"></div>
+      </div>
+
+      <div class="keypad">
+        <button class="key-btn" onclick="pressKey('1')">1</button>
+        <button class="key-btn" onclick="pressKey('2')">2</button>
+        <button class="key-btn" onclick="pressKey('3')">3</button>
+        <button class="key-btn" onclick="pressKey('4')">4</button>
+        <button class="key-btn" onclick="pressKey('5')">5</button>
+        <button class="key-btn" onclick="pressKey('6')">6</button>
+        <button class="key-btn" onclick="pressKey('7')">7</button>
+        <button class="key-btn" onclick="pressKey('8')">8</button>
+        <button class="key-btn" onclick="pressKey('9')">9</button>
+        <button class="key-btn" onclick="clearPin()">C</button>
+        <button class="key-btn" onclick="pressKey('0')">0</button>
+        <button class="key-btn" onclick="deletePin()">⌫</button>
+      </div>
+
+      <div class="pass-error" id="passError"></div>
+      <button class="pass-close" onclick="closePasswordModal()">Cancelar</button>
     </div>
   </div>
 
@@ -265,19 +287,77 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
   </div>
 
   <script>
-    function openLetter() { document.getElementById('letterModal').classList.add('active'); }
+    const phrases = [
+      "\"1 de octubre, porque sí, porque te amo. Un nuevo mes para recordar lo única, brillante e importante que eres en mi vida.\"",
+      "\"Te amo infinitamente. ❤️\"",
+      "\"Recuerda que eres única, brillante y muy importante. ✨\"",
+      "\"Eres la mujer más hermosa de todo el fking world. 👑\"",
+      "\"Te amo con cojones. 🔥\""
+    ];
+    let currentPhraseIndex = 0;
+    const quoteElement = document.getElementById('quoteText');
+
+    setInterval(() => {
+      quoteElement.style.opacity = 0;
+      setTimeout(() => {
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        quoteElement.innerText = phrases[currentPhraseIndex];
+        quoteElement.style.opacity = 1;
+      }, 500);
+    }, 4500);
+
+    let enteredPin = "";
+    const correctPin = "2406";
+
+    function openPasswordModal() {
+      document.getElementById('passModal').classList.add('active');
+      clearPin();
+    }
+    function closePasswordModal() {
+      document.getElementById('passModal').classList.remove('active');
+      clearPin();
+    }
+    function pressKey(num) {
+      if (enteredPin.length < 4) {
+        enteredPin += num;
+        updatePinDisplay();
+        if (enteredPin.length === 4) { setTimeout(checkPin, 200); }
+      }
+    }
+    function deletePin() {
+      if (enteredPin.length > 0) { enteredPin = enteredPin.slice(0, -1); updatePinDisplay(); }
+    }
+    function clearPin() {
+      enteredPin = ""; updatePinDisplay(); document.getElementById('passError').innerText = "";
+    }
+    function updatePinDisplay() {
+      for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById(`dot${i}`);
+        if (i < enteredPin.length) { dot.classList.add('filled'); }
+        else { dot.classList.remove('filled'); }
+      }
+    }
+    function checkPin() {
+      if (enteredPin === correctPin) {
+        closePasswordModal();
+        createBurstPetals();
+        document.getElementById('letterModal').classList.add('active');
+      } else {
+        document.getElementById('passError').innerText = "Contraseña incorrecta, amor ❤️";
+        setTimeout(clearPin, 1000);
+      }
+    }
     function closeLetter() { document.getElementById('letterModal').classList.remove('active'); }
-    
+
     const music = document.getElementById('bg-music');
     const musicText = document.getElementById('music-text');
     const bouquetBtn = document.getElementById('bouquetBtn');
 
     function handleBouquetClick() {
-      bouquetBtn.classList.add('pressed');
-      setTimeout(() => { bouquetBtn.classList.remove('pressed'); }, 200);
+      bouquetBtn.style.transform = "scale(1.15)";
+      setTimeout(() => { bouquetBtn.style.transform = "scale(1)"; }, 200);
       toggleMusic();
     }
-
     function toggleMusic() {
       if (music.paused) {
         music.play();
@@ -287,7 +367,6 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
         if(musicText) musicText.innerText = "Música";
       }
     }
-
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
@@ -299,9 +378,7 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
       document.body.appendChild(petal);
       setTimeout(() => { petal.remove(); }, 7000);
     }
-
     setInterval(createPetal, 400);
-
     function createBurstPetals() {
       for(let i = 0; i < 15; i++) { setTimeout(createPetal, i * 100); }
     }
