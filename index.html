@@ -41,41 +41,16 @@
       text-shadow: 2px 2px 0px #ffcdd2;
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
-    
-    /* ANIMACIÓN DE MOVIMIENTO FLOTANTE */
     .bouquet-box {
       position: relative;
       width: 200px;
-      height: 200px;
-      margin: 0 auto 15px auto;
+      height: 160px;
+      margin: 0 auto 10px auto;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: gentleFloat 3s ease-in-out infinite;
-      transition: transform 0.2s ease;
     }
-    .bouquet-box:hover {
-      transform: scale(1.05);
-    }
-    .bouquet-box svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 8px 15px rgba(136, 14, 79, 0.2));
-    }
-    
-    @keyframes gentleFloat {
-      0% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-12px) rotate(3deg);
-      }
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-    }
-
     .tap-hint {
       display: inline-flex;
       background-color: #880e4f;
@@ -86,7 +61,6 @@
       border-radius: 25px;
       margin-bottom: 18px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .quote-card {
       background: rgba(255, 255, 255, 0.9);
@@ -123,7 +97,6 @@
       border-radius: 16px;
       cursor: pointer;
       margin-bottom: 14px;
-      box-shadow: 0 6px 15px rgba(136, 14, 79, 0.3);
     }
     .sub-buttons { display: flex; gap: 10px; }
     .btn-sub {
@@ -181,42 +154,8 @@
     <h1>Para ti, mi bella flaca</h1>
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
-    <!-- EL RAMO EXACTO DE LA CAPTURA CON MOVIMIENTO -->
     <div class="bouquet-box" onclick="toggleMusic()">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Cono/Envoltorio verde claro inclinado -->
-        <path d="M125,185 L145,155 L105,100 L75,130 Z" fill="#81c784" />
-        <path d="M125,185 L145,155 L120,120 L100,150 Z" fill="#66bb6a" opacity="0.4" />
-        <rect x="110" y="140" width="20" height="8" rx="3" fill="#00acc1" transform="rotate(-35 120 144)"/>
-
-        <!-- Hojas verdes arriba -->
-        <path d="M70,110 C55,80 75,60 90,75 Z" fill="#4caf50"/>
-        <path d="M125,75 C145,60 155,85 135,100 Z" fill="#4caf50"/>
-
-        <!-- Flor Morada/Rosa Izquierda -->
-        <g transform="translate(85, 95) rotate(-20)">
-          <path d="M0,-20 C-12,-12 -15,6 0,20 C15,6 12,-12 0,-20 Z" fill="#ba68c8"/>
-          <path d="M-10,-6 C-15,2 -10,12 0,16 C-6,5 -3,-6 -10,-6 Z" fill="#8e24aa"/>
-          <path d="M10,-6 C15,2 10,12 0,16 C6,5 3,-6 10,-6 Z" fill="#8e24aa"/>
-        </g>
-
-        <!-- Flor Morada/Rosa Arriba -->
-        <g transform="translate(115, 70) rotate(15)">
-          <path d="M0,-22 C-14,-14 -16,7 0,22 C16,7 14,-14 0,-22 Z" fill="#ab47bc"/>
-          <path d="M-11,-7 C-16,2 -11,13 0,18 C-7,5 -3,-7 -11,-7 Z" fill="#7b1fa2"/>
-          <path d="M11,-7 C16,2 11,13 0,18 C7,5 3,-7 11,-7 Z" fill="#7b1fa2"/>
-        </g>
-
-        <!-- Flor Amarilla Centro -->
-        <g transform="translate(108, 92)">
-          <circle cx="0" cy="-12" r="6.5" fill="#fdd835"/>
-          <circle cx="11" cy="-4" r="6.5" fill="#fdd835"/>
-          <circle cx="7" cy="9" r="6.5" fill="#fdd835"/>
-          <circle cx="-7" cy="9" r="6.5" fill="#fdd835"/>
-          <circle cx="-11" cy="-4" r="6.5" fill="#fdd835"/>
-          <circle cx="0" cy="0" r="7" fill="#fb8c00"/>
-        </g>
-      </svg>
+      <div style="font-size: 110px; line-height: 1; user-select: none;">💐</div>
     </div>
 
     <div class="tap-hint" onclick="toggleMusic()">
@@ -259,7 +198,7 @@ No sabes las ganas que tengo de verte mi amor. De tenerte frente a mí y pensar:
 
 Y, ¿sabes qué preciosa? A pesar de to’, de las dificultades, de los momentos complicados, de las cosas que nos han dolido y de to’ lo que hemos tenido que afrontar, yo sigo queriendo estar con vo’. No porque crea que todo será perfecto ni porque nunca vayamo’ a tener problemas, sino porque, incluso conociendo que no to’ es fácil, todavía quiero vivir muchas cosas a tu lado. Quiero seguir conociéndote, seguir construyendo lo nuestro, aprender de nuestros errores y encontrar esa manera de amarnos en la que los dos podamos sentirnos tranquilos, seguros y queridos.
 
-Yo no te quiero solamente para los días bonitos, cuando todo marcha bien y nos sobran los motivos para sonreír. También quiero estar contigo en esos días en los que las cosas se sienten más pesadas, cuando no sabemos muy bien cómo soluciona’ algo o cuando simplemente necesitamos un poquito más de paciencia y comprensión. Porque mi amor por ti no desaparece cuando las cosas se complicación. Aquí sigue, quizás a veces acompañado de miedos, de pensamientos y de sentimientos que no sé explicar del todo, pero sigue aquí, siendo tuyo.
+Yo no te quiero solamente para los días bonitos, cuando todo marcha bien y nos sobran los motivos para sonreír. También quiero estar contigo en esos días en los que las cosas se sienten más pesadas, cuando no sabemos muy bien cómo soluciona’ algo o cuando simplemente necesitamos un poquito más de paciencia y comprensión. Porque mi amor por ti no desaparece cuando las cosas se complican. Aquí sigue, quizás a veces acompañado de miedos, de pensamientos y de sentimientos que no sé explicar del todo, pero sigue aquí, siendo tuyo.
 
 Te amo muchísimo mi niña. Y ojalá pudiera hacerte sentir aunque fuera por un instante, todo lo que siento cuando pienso en ti, porque hay cosas que por más que intente escribirlas nunca me van a alcanzar las palabras para explicarlas. Simplemente eres tú, mi niña. Tú, a quien extraño, a quien quiero abrazar, besar, cuidar y tener cerquita. Tú, con quien quiero compartir mis días y a quien quiero volve’ a mirar de frente mientras pienso en lo mucho que me gusta tenerte en mi life.
 
