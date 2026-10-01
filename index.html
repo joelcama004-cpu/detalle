@@ -41,16 +41,36 @@
       text-shadow: 2px 2px 0px #ffcdd2;
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
+    
+    /* ANIMACIÓN DE MOVIMIENTO LEVE AL RAMO */
     .bouquet-box {
       position: relative;
-      width: 200px;
-      height: 160px;
-      margin: 0 auto 10px auto;
+      width: 220px;
+      height: 180px;
+      margin: 0 auto 15px auto;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: gentleFloat 3.5s ease-in-out infinite;
+      transition: transform 0.2s ease;
     }
+    .bouquet-box:hover {
+      transform: scale(1.05);
+    }
+    
+    @keyframes gentleFloat {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(1.5deg);
+      }
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
     .tap-hint {
       display: inline-flex;
       background-color: #880e4f;
@@ -155,7 +175,7 @@
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
     <div class="bouquet-box" onclick="toggleMusic()">
-      <div style="font-size: 110px; line-height: 1; user-select: none;">💐</div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Red_rose_bouquet.jpg/640px-Red_rose_bouquet.jpg" alt="Ramo de rosas" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
     </div>
 
     <div class="tap-hint" onclick="toggleMusic()">
@@ -198,7 +218,7 @@ No sabes las ganas que tengo de verte mi amor. De tenerte frente a mí y pensar:
 
 Y, ¿sabes qué preciosa? A pesar de to’, de las dificultades, de los momentos complicados, de las cosas que nos han dolido y de to’ lo que hemos tenido que afrontar, yo sigo queriendo estar con vo’. No porque crea que todo será perfecto ni porque nunca vayamo’ a tener problemas, sino porque, incluso conociendo que no to’ es fácil, todavía quiero vivir muchas cosas a tu lado. Quiero seguir conociéndote, seguir construyendo lo nuestro, aprender de nuestros errores y encontrar esa manera de amarnos en la que los dos podamos sentirnos tranquilos, seguros y queridos.
 
-Yo no te quiero solamente para los días bonitos, cuando todo marcha bien y nos sobran los motivos para sonreír. También quiero estar contigo en esos días en los que las cosas se sienten más pesadas, cuando no sabemos muy bien cómo soluciona’ algo o cuando simplemente necesitamos un poquito más de paciencia y comprensión. Porque mi amor por ti no desaparece cuando las cosas se complican. Aquí sigue, quizás a veces acompañado de miedos, de pensamientos y de sentimientos que no sé explicar del todo, pero sigue aquí, siendo tuyo.
+Yo no te quiero solamente para los días bonitos, cuando todo marcha bien y nos sobran los motivos para sonreír. También quiero estar contigo en esos días en los que las cosas se sienten más pesadas, cuando no sabemos muy bien cómo soluciona’ algo o cuando simplemente necesitamos un poquito más de paciencia y comprensión. Porque mi amor por ti no desaparece cuando las cosas se complicación. Aquí sigue, quizás a veces acompañado de miedos, de pensamientos y de sentimientos que no sé explicar del todo, pero sigue aquí, siendo tuyo.
 
 Te amo muchísimo mi niña. Y ojalá pudiera hacerte sentir aunque fuera por un instante, todo lo que siento cuando pienso en ti, porque hay cosas que por más que intente escribirlas nunca me van a alcanzar las palabras para explicarlas. Simplemente eres tú, mi niña. Tú, a quien extraño, a quien quiero abrazar, besar, cuidar y tener cerquita. Tú, con quien quiero compartir mis días y a quien quiero volve’ a mirar de frente mientras pienso en lo mucho que me gusta tenerte en mi life.
 
