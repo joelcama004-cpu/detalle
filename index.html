@@ -42,17 +42,17 @@
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
     
-    /* ANIMACIÓN DE MOVIMIENTO FLOTANTE AL RAMO ORIGINAL */
+    /* ANIMACIÓN DE MOVIMIENTO FLOTANTE */
     .bouquet-box {
       position: relative;
-      width: 210px;
-      height: 210px;
+      width: 200px;
+      height: 200px;
       margin: 0 auto 15px auto;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: gentleFloat 3.5s ease-in-out infinite;
+      animation: gentleFloat 3s ease-in-out infinite;
       transition: transform 0.2s ease;
     }
     .bouquet-box:hover {
@@ -69,7 +69,7 @@
         transform: translateY(0px) rotate(0deg);
       }
       50% {
-        transform: translateY(-10px) rotate(2.5deg);
+        transform: translateY(-12px) rotate(3deg);
       }
       100% {
         transform: translateY(0px) rotate(0deg);
@@ -181,46 +181,40 @@
     <h1>Para ti, mi bella flaca</h1>
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
-    <!-- EL RAMO EXACTO QUE TENÍAS EN TU CAPTURA CON MOVIMIENTO FLOTANTE -->
+    <!-- EL RAMO EXACTO DE LA CAPTURA CON MOVIMIENTO -->
     <div class="bouquet-box" onclick="toggleMusic()">
-      <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-        <!-- Cono/Envoltorio azul -->
-        <path d="M55,80 L145,80 L115,200 L85,200 Z" fill="#29b6f6" />
-        <path d="M55,80 L85,200 L100,200 L70,80 Z" fill="#0288d1" opacity="0.3" />
-        <!-- Cinta Amarilla con Lazo -->
-        <rect x="82" y="150" width="36" height="12" rx="4" fill="#ffee58" />
-        <circle cx="100" cy="156" r="6" fill="#fdd835" />
-        <path d="M94,162 C90,175 80,185 75,190 M106,162 C110,175 120,185 125,190" stroke="#ffee58" stroke-width="4" stroke-linecap="round" fill="none" />
-        <!-- Hoja Verde Izquierda -->
-        <path d="M45,75 C30,60 40,35 60,50 C65,65 55,75 45,75 Z" fill="#66bb6a" />
-        <!-- Hoja Verde Derecha -->
-        <path d="M155,75 C170,60 160,35 140,50 C135,65 145,75 155,75 Z" fill="#66bb6a" />
-        <!-- Flor Morada Izquierda -->
-        <g transform="translate(68, 65)">
-          <path d="M0,-24 C-15,-15 -18,8 0,24 C18,8 15,-15 0,-24 Z" fill="#ab47bc" />
-          <path d="M-12,-8 C-18,2 -12,14 0,20 C-8,6 -4,-8 -12,-8 Z" fill="#7b1fa2" />
-          <path d="M12,-8 C18,2 12,14 0,20 C8,6 4,-8 12,-8 Z" fill="#7b1fa2" />
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cono/Envoltorio verde claro inclinado -->
+        <path d="M125,185 L145,155 L105,100 L75,130 Z" fill="#81c784" />
+        <path d="M125,185 L145,155 L120,120 L100,150 Z" fill="#66bb6a" opacity="0.4" />
+        <rect x="110" y="140" width="20" height="8" rx="3" fill="#00acc1" transform="rotate(-35 120 144)"/>
+
+        <!-- Hojas verdes arriba -->
+        <path d="M70,110 C55,80 75,60 90,75 Z" fill="#4caf50"/>
+        <path d="M125,75 C145,60 155,85 135,100 Z" fill="#4caf50"/>
+
+        <!-- Flor Morada/Rosa Izquierda -->
+        <g transform="translate(85, 95) rotate(-20)">
+          <path d="M0,-20 C-12,-12 -15,6 0,20 C15,6 12,-12 0,-20 Z" fill="#ba68c8"/>
+          <path d="M-10,-6 C-15,2 -10,12 0,16 C-6,5 -3,-6 -10,-6 Z" fill="#8e24aa"/>
+          <path d="M10,-6 C15,2 10,12 0,16 C6,5 3,-6 10,-6 Z" fill="#8e24aa"/>
         </g>
-        <!-- Flor Morada Derecha -->
-        <g transform="translate(132, 65)">
-          <path d="M0,-24 C-15,-15 -18,8 0,24 C18,8 15,-15 0,-24 Z" fill="#ab47bc" />
-          <path d="M-12,-8 C-18,2 -12,14 0,20 C-8,6 -4,-8 -12,-8 Z" fill="#7b1fa2" />
-          <path d="M12,-8 C18,2 12,14 0,20 C8,6 4,-8 12,-8 Z" fill="#7b1fa2" />
+
+        <!-- Flor Morada/Rosa Arriba -->
+        <g transform="translate(115, 70) rotate(15)">
+          <path d="M0,-22 C-14,-14 -16,7 0,22 C16,7 14,-14 0,-22 Z" fill="#ab47bc"/>
+          <path d="M-11,-7 C-16,2 -11,13 0,18 C-7,5 -3,-7 -11,-7 Z" fill="#7b1fa2"/>
+          <path d="M11,-7 C16,2 11,13 0,18 C7,5 3,-7 11,-7 Z" fill="#7b1fa2"/>
         </g>
-        <!-- Flor Roja/Rosa Centro Arriba -->
-        <g transform="translate(100, 42)">
-          <path d="M0,-26 C-16,-16 -20,8 0,26 C20,8 16,-16 0,-26 Z" fill="#e91e63" />
-          <path d="M-14,-10 C-20,0 -15,16 0,22 C-10,6 -5,-10 -14,-10 Z" fill="#c2185b" />
-          <path d="M14,-10 C20,0 15,16 0,22 C10,6 5,-10 14,-10 Z" fill="#c2185b" />
-        </g>
+
         <!-- Flor Amarilla Centro -->
-        <g transform="translate(100, 78)">
-          <circle cx="0" cy="-16" r="8" fill="#ffee58"/>
-          <circle cx="15" cy="-5" r="8" fill="#ffee58"/>
-          <circle cx="9" cy="13" r="8" fill="#ffee58"/>
-          <circle cx="-9" cy="13" r="8" fill="#ffee58"/>
-          <circle cx="-15" cy="-5" r="8" fill="#ffee58"/>
-          <circle cx="0" cy="0" r="9" fill="#f57c00"/>
+        <g transform="translate(108, 92)">
+          <circle cx="0" cy="-12" r="6.5" fill="#fdd835"/>
+          <circle cx="11" cy="-4" r="6.5" fill="#fdd835"/>
+          <circle cx="7" cy="9" r="6.5" fill="#fdd835"/>
+          <circle cx="-7" cy="9" r="6.5" fill="#fdd835"/>
+          <circle cx="-11" cy="-4" r="6.5" fill="#fdd835"/>
+          <circle cx="0" cy="0" r="7" fill="#fb8c00"/>
         </g>
       </svg>
     </div>
