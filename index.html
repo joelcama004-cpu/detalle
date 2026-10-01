@@ -41,6 +41,8 @@
       text-shadow: 2px 2px 0px #ffcdd2;
     }
     .subtitle { font-size: 0.95rem; color: #ad1457; margin-bottom: 20px; font-weight: 600; }
+    
+    /* RAMO FIJO SIN MOVIMIENTO CONTINUO + EFECTO DE BOTÓN HACIA ADELANTE AL TOCAR */
     .bouquet-box {
       position: relative;
       width: 200px;
@@ -50,7 +52,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      -webkit-tap-highlight-color: transparent;
     }
+    
+    /* EFECTO CUANDO SE TOCA / PRESIONA (POP-OUT HACIA ADELANTE) */
+    .bouquet-box:active, .bouquet-box.pressed {
+      transform: scale(1.22) translateY(-4px) !important;
+    }
+
     .tap-hint {
       display: inline-flex;
       background-color: #880e4f;
@@ -154,11 +164,11 @@
     <h1>Para ti, mi bella flaca</h1>
     <div class="subtitle">Que este día se llene de todo el amor y la luz que le traes a mi vida 🌹</div>
 
-    <div class="bouquet-box" onclick="toggleMusic()">
+    <div class="bouquet-box" id="bouquetBtn" onclick="handleBouquetClick()">
       <div style="font-size: 110px; line-height: 1; user-select: none;">💐</div>
     </div>
 
-    <div class="tap-hint" onclick="toggleMusic()">
+    <div class="tap-hint" onclick="handleBouquetClick()">
       👆 ¡Toca el ramo para una sorpresa!
     </div>
 
@@ -208,15 +218,27 @@ Te amo mi preciosa. Más de lo que te imaginas, más de lo que a veces sé demos
 
 Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus besitos y tus sentones hahaha.✨
       </div>
-      <button class="close-btn" onclick="closeLetter()">Cerrar Carta ❤️</button>
+      <button class="close-btn" onclick="closeLetter()">Cerrar Carta ❤️️</button>
     </div>
   </div>
 
   <script>
     function openLetter() { document.getElementById('letterModal').classList.add('active'); }
     function closeLetter() { document.getElementById('letterModal').classList.remove('active'); }
+    
     const music = document.getElementById('bg-music');
     const musicText = document.getElementById('music-text');
+    const bouquetBtn = document.getElementById('bouquetBtn');
+
+    function handleBouquetClick() {
+      // Activa el salto/pulsación de botón
+      bouquetBtn.classList.add('pressed');
+      setTimeout(() => { bouquetBtn.classList.remove('pressed'); }, 200);
+      
+      // Controla la música
+      toggleMusic();
+    }
+
     function toggleMusic() {
       if (music.paused) {
         music.play();
@@ -226,6 +248,7 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
         if(musicText) musicText.innerText = "Música";
       }
     }
+
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
@@ -237,7 +260,9 @@ Te extraño mi bebe hermosa. Ven pronto, que a este nigga le hacen falta tus bes
       document.body.appendChild(petal);
       setTimeout(() => { petal.remove(); }, 7000);
     }
+
     setInterval(createPetal, 400);
+
     function createBurstPetals() {
       for(let i = 0; i < 15; i++) { setTimeout(createPetal, i * 100); }
     }
